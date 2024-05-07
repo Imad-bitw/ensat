@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <header>Importer Votre SOURCE PDF DE VOTRE SOCIETE</header>
+  <form [formGroup]="verifyGroup">
+    <input
+      class="file-input"
+      type="file"
+      (change)="onFileSelected($event)"
+      formControlName="contrat_Fichier"
+    />
+    <i class="fas fa-cloud-upload-alt"></i>
+    <p>Parcourir les fichiers à télécharger</p>
+  </form>
+  <section class="progress-area"></section>
+  <section class="uploaded-area"></section>
+  
+  <!-- Boutons pour "Vider la base de données" et "Embadding" -->
+  <div class="button-group">
+    <button (click)="onClearDatabase()">Vider la base de données</button>
+    <button (click)="onEmbadding()">Embadding</button>
+    
+  </div>
+  
+  <!-- Champ de texte pour la question -->
+  <div class="question-area">
+    <input type="text" placeholder="Posez votre question..." [(ngModel)]="questionText" />
+    <button (click)="onSendQuestion()">Envoyer</button>
+  </div>
+  
+  <!-- Résultat stylisé -->
+  <div class="result-area">
+    <h1>Résultat</h1>
+    <p>{{ resultat }}</p>
+  </div>
+  
+  <!-- Animation de chargement -->
+  <div *ngIf="loading" class="loading-circle"></div>
+</div>
